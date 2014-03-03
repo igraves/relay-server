@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Types where
+module Relay.Server.Types where
 
 import Data.Aeson
 import Control.Applicative 

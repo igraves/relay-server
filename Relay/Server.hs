@@ -1,7 +1,9 @@
 {-# LANGUAGE OverloadedStrings #-}
 
+module Relay.Server where
+
 import Snap
-import Types
+import Relay.Server.Types
 import Control.Exception.Lifted
 import Data.Aeson
 import Data.Maybe
