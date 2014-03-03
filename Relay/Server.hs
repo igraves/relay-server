@@ -13,8 +13,7 @@ import Data.Maybe
 import Debug.Trace
 
 site :: Snap ()
-site = auth $ do
-                writeText "SUCCESSFUL REQUEST!!"
+site = auth $ writeText "SUCCESSFUL REQUEST!!"
 
 main :: IO ()
 main = quickHttpServe site

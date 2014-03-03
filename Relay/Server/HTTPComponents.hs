@@ -6,11 +6,11 @@ import Data.CaseInsensitive (CI, mk)
 import qualified Data.ByteString as BS
 
 
-signature_header :: CI BS.ByteString
-signature_header = mk "relay-signature"
+signatureHeader :: CI BS.ByteString
+signatureHeader = mk "relay-signature"
 
-identity_header :: CI BS.ByteString
-identity_header  = mk "relay-identity"
+identityHeader :: CI BS.ByteString
+identityHeader  = mk "relay-identity"
 
-nonce_header :: CI BS.ByteString
-nonce_header     = mk "relay-nonce"
+nonceHeader :: CI BS.ByteString
+nonceHeader     = mk "relay-nonce"
