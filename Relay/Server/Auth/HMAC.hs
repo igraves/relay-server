@@ -13,9 +13,6 @@ import Data.ByteString.Char8 (readInteger)
 import Data.Maybe (isJust,fromJust)
 import Data.Digest.Pure.SHA
 import Data.Binary (encode)
-import Control.Monad (liftM)
-import Control.Monad.Trans.Maybe
-import Control.Monad.Trans (lift)
 import Data.Word
 
 
@@ -37,6 +34,7 @@ get_nonce = error "Nonce state undefined"
 put_nonce :: MonadSnap m => Nonce -> m ()
 put_nonce = error "Nonce put not defined"
 
+lbsappend :: LBS.ByteString -> LBS.ByteString -> LBS.ByteString
 lbsappend a b = LBS.append a b 
 
 unauth_req_response :: Snap ()
@@ -63,12 +61,12 @@ auth_headers = do
 
 auth :: Snap () -> Snap ()
 auth sm = do
-            headers <- auth_headers
-            secret <- lookup_secret $ liftM (\(i,_,_) -> i) headers
-            case (valid (headers,secret)) of
+            hdrs <- auth_headers
+            secret <- lookup_secret $ liftM (\(i,_,_) -> i) hdrs
+            case (valid (hdrs,secret)) of
                       False -> unauth_req_response
                       True  -> do
-                                  let (ident,nonce,sig) = fromJust headers
+                                  let (_,nonce,sig) = fromJust hdrs
                                       sec = fromJust secret
                                   body <- readRequestBody 262144 -- 256kB
                                   case (authorized sig nonce sec body) of

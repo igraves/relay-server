@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Relay.Server.HTTPComponents where
 
-import Relay.Server.Types
+--import Relay.Server.Types
 import Data.CaseInsensitive (CI, mk)
 import qualified Data.ByteString as BS
 

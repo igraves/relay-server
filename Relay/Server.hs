@@ -1,17 +1,38 @@
+{-# LANGUAGE EmptyDataDecls    #-}
+{-# LANGUAGE FlexibleContexts  #-}
+{-# LANGUAGE GADTs             #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE QuasiQuotes       #-}
+{-# LANGUAGE TemplateHaskell   #-}
+{-# LANGUAGE TypeFamilies      #-}
 
 module Relay.Server where
 
-import Relay.Server.Types
-import Relay.Server.Auth.HMAC (auth)
+-------------------------------------------------------------------------------
+--Explicit Imports
+-------------------------------------------------------------------------------
 
-import Snap
-import Control.Exception.Lifted
-import Data.Aeson
-import Data.Maybe
 
-import Debug.Trace
+import           Snap
+import           Data.ByteString
+import           Control.Lens
 
+import           Relay.Server.JSON
+import           Relay.Server.Auth.HMAC (auth)
+
+-------------------------------------------------------------------------------
+--Storage Code
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+--Application State
+-------------------------------------------------------------------------------
+data App = App {
+               }
+
+-------------------------------------------------------------------------------
+--Snap Code
+-------------------------------------------------------------------------------
 site :: Snap ()
 site = auth $ writeText "SUCCESSFUL REQUEST!!"
 

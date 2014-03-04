@@ -60,7 +60,16 @@ executable relay-server
   other-extensions:    OverloadedStrings
   
   -- Other library packages from which modules are imported.
-  build-depends:       base >=4.6 && <4.7, snap >=0.13 && <0.14, aeson, lifted-base >=0.2 && <0.3, snap-extras >=0.7 && <0.8, bytestring >=0.10 && <0.11, case-insensitive >=1.1 && <1.2, SHA >=1.6 && <1.7, binary >=0.7 && <0.8
+  build-depends:       base >=4.6 && <4.7, 
+                       snap, 
+                       snap-extras,
+                       postgresql-simple,
+                       aeson, 
+                       lifted-base, 
+                       bytestring, 
+                       case-insensitive, 
+                       SHA >=1.6 && <1.7, 
+                       binary >=0.7 && <0.8
   
   -- Directories containing source files.
   -- hs-source-dirs:      
