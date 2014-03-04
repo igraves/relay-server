@@ -62,8 +62,8 @@ executable relay-server
   -- Other library packages from which modules are imported.
   build-depends:       base >=4.6 && <4.7, 
                        snap, 
-                       snap-extras,
                        postgresql-simple,
+                       snaplet-postgresql-simple,
                        aeson, 
                        lifted-base, 
                        bytestring, 
